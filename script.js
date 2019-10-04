@@ -421,6 +421,7 @@ console.log(emily);
 /**
  * Maps 
  */
+/*
 
  const question = new Map();
  question.set('question', 'What is the official name of the latest major Javascript version?');
@@ -458,3 +459,48 @@ console.log(question.get(ans === question.get('correct')));
 // Maps are iterable 
 // Maps have size property
 // Maps can easily add and remove a property
+*/
+
+
+/**
+ * Classes
+ * synthetic suger over the way we do prototypal inheritance in JS
+ * can only add methods not properities
+ * not hoisted
+ */
+
+ //ES5 
+ var Person5 = function(name, yearOfBirth, job) {
+     this.name = name;
+     this.yearOfBirth = yearOfBirth;
+     this.job = job;
+ }
+
+ Person5.prototype.calculateAge = function() {
+     var age = new Date().getFullYear - this.yearOfBirth;
+     console.log(age);
+ }
+
+ var john5 = new Person5('John', 1990, 'teacher');
+
+ //ES6
+ class Person6 {
+     constructor (name, yearOfBirth, job) {
+         this.name = name;
+         this.yearOfBirth = yearOfBirth;
+         this.job = job;
+     }
+
+     calculateAge() {
+         var age = new Date().getFullYear - this.yearOfBirth; 
+         console.log(age);
+     }
+
+     static greeting() {
+         console.log('Hey, there!');
+     }
+ }
+
+ const john6 = new Person6('Joh', 1990, 'teacher');
+
+ Person6.greeting();
