@@ -11,7 +11,7 @@ const name6 = 'Jane Smith';
 let age6 = 23;
 name6 = 'Jane Miller';
 console.log(name6);
-*/
+
 
 // ES5
 function driverLicense(passedTest) {
@@ -51,3 +51,27 @@ for (let i = 0; i < 5; i++) {
 }
 
 console.log(i); // 23
+*/
+
+
+/**
+ * Blocks and IIFEs
+ * data privacy by using a block
+ */
+
+// ES6
+ {
+     const a = 1;
+     let b = 2;
+     var c = 3;
+ }
+
+//  console.log(a + b); // not defined b/c of scoping
+console.log(c);
+ // ES5
+ (function() {
+     var c = 3;
+ })();
+
+ console.log(c);
+
