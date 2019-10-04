@@ -53,7 +53,6 @@ for (let i = 0; i < 5; i++) {
 console.log(i); // 23
 */
 
-
 /**
  * Blocks and IIFEs
  * data privacy by using a block
@@ -103,10 +102,10 @@ console.log(c);
  console.log(`${firstName} `.repeat(5));
  */
 
- /**
-  * Arrow Functions: Basics
-  */
- /*
+/**
+ * Arrow Functions: Basics
+ */
+/*
 
   const years = [1990, 1965, 1982, 1937];
 
@@ -164,7 +163,7 @@ console.log(c);
  }
  box6.clickMe();
 */
- /*
+/*
  // ES6 avoid of confusing arrow usage
   const box66 = {
      color: 'green',
@@ -180,13 +179,12 @@ console.log(c);
  box66.clickMe();
  */
 
+function Person(name) {
+  this.name = name;
+}
 
- function Person(name) {
-     this.name = name;
- }
-
- // ES5
- /*
+// ES5
+/*
  Person.prototype.myFriends5 = function(friends) {
      var arr = friends.map(function(el) {
          return this.name + ' is friends with ' + el;
@@ -207,10 +205,10 @@ console.log(c);
  new Person('Jane').myFriends6(friends);
  */
 
- /**
-  * Destructuring
-  */
- /*
+/**
+ * Destructuring
+ */
+/*
 
   // ES5
   var john = ['John', 26];
@@ -334,9 +332,9 @@ console.log(ages.find(cur => cur >= 18));
  Array.from(all).forEach(curr => curr.style.color = 'purple');
  */
 
- /**
-  * Rest Parameters
-  */
+/**
+ * Rest Parameters
+ */
 /*
   // ES5
   function isFullAge5() {
@@ -356,7 +354,7 @@ console.log(ages.find(cur => cur >= 18));
     years.forEach(cur => console.log((2016 - cur) >= 18));
   }
   isFullAge5(1990, 1999, 1965, 2016, 1987);
-  */
+  
 
   // ES5
   function isFullAge5(limit) {
@@ -376,3 +374,45 @@ console.log(ages.find(cur => cur >= 18));
     years.forEach(cur => console.log((2016 - cur) >= limit));
   }
   isFullAge5(16, 1990, 1999, 1965, 2016, 1987);
+  */
+
+/**
+ * Default Prameters
+ */
+
+/*
+   //ES5
+   function SmithPerson(firstName, yearOfBirth, lastName,  nationality) {
+
+        lastName === undefined ? lastName = 'Smith' : lastName;
+        nationality === undefined ? nationality = 'American' : nationality;
+
+       this.firstName = firstName;
+       this.lastName = lastName;
+       this.yearOfBirth = yearOfBirth;
+       this.nationality = nationality
+   }
+
+   var john = new SmithPerson('John', 1990);   
+   console.log(john);
+   var emily = new SmithPerson('Emily', 1983, 'Diaz', 'Spanish');
+   console.log(emily);
+   */
+
+//ES6
+function SmithPerson(
+  firstName,
+  yearOfBirth,
+  lastName = "Smith",
+  nationality = "American"
+) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.yearOfBirth = yearOfBirth;
+  this.nationality = nationality;
+}
+
+var john = new SmithPerson("John", 1990);
+console.log(john);
+var emily = new SmithPerson("Emily", 1983, "Diaz", "Spanish");
+console.log(emily);
