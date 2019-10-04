@@ -419,7 +419,7 @@ console.log(emily);
 */
 
 /**
- * Maps 
+ * Maps
  */
 /*
 
@@ -461,13 +461,13 @@ console.log(question.get(ans === question.get('correct')));
 // Maps can easily add and remove a property
 */
 
-
 /**
  * Classes
  * synthetic suger over the way we do prototypal inheritance in JS
  * can only add methods not properities
  * not hoisted
  */
+/*
 
  //ES5 
  var Person5 = function(name, yearOfBirth, job) {
@@ -504,3 +504,72 @@ console.log(question.get(ans === question.get('correct')));
  const john6 = new Person6('Joh', 1990, 'teacher');
 
  Person6.greeting();
+*/
+
+/**
+ * Classes with Subclasses
+ * inheritance between classes
+ */
+
+//ES5
+
+var Person5 = function(name, yearOfBirth, job) {
+  this.name = name;
+  this.yearOfBirth = yearOfBirth;
+  this.job = job;
+};
+
+Person5.prototype.calculateAge = function() {
+  var age = new Date().getFullYear() - this.yearOfBirth;
+  console.log(age);
+};
+
+var athlete5 = function(name, yearOfBirth, job, olympicGames, medals) {
+  Person5.call(this, name, yearOfBirth, job);
+  this.olympicGames = olympicGames;
+  this.medals = medals;
+};
+
+athlete5.prototype = Object.create(Person5.prototype);
+
+athlete5.prototype.wonMedal = function() {
+  this.medals++;
+  console.log(this.medals);
+};
+var johnAthlete5 = new athlete5("John", 1990, "swimmer", 3, 10);
+
+johnAthlete5.calculateAge();
+johnAthlete5.wonMedal();
+
+
+ //ES6
+ class Person6 {
+     constructor (name, yearOfBirth, job) {
+         this.name = name;
+         this.yearOfBirth = yearOfBirth;
+         this.job = job;
+     }
+
+     calculateAge() {
+         var age = new Date().getFullYear() - this.yearOfBirth; 
+         console.log(age);
+     }
+ }
+
+ class athlete6 extends Person6 {
+     constructor(name, yearOfBirth, job, olympicGames, medals) {
+         super(name, yearOfBirth, job);
+         this.olympicGames = olympicGames;
+         this.medals = medals;
+     }
+
+     wonMedal() {
+         this.medals++;
+         console.log(this.medals);
+     }
+ }
+
+ const johnAthlete6 = new athlete6('John', 1990, 'swimmer', 3, 10);
+
+ johnAthlete6.wonMedal();
+ johnAthlete6.calculateAge();
